@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Information</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 10%;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		li {
+			width: 400px;
+			font-size: larger;
+			padding-bottom: 5%;
+			padding-left: 10%;
+			border-bottom: 1px solid gray;
+		}
+
+		p {
+			height: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>User Information</h1>
+	<ul id="users-list" style="height: 50px;"></ul>
+
+	<script>
+		let details = JSON.parse(localStorage.getItem("details")) || [];
+		let list = document.getElementById("users-list");
+		details.forEach(function (details) {
+			let item = document.createElement("li");
+			item.innerHTML = "<p><b>Name: </b>" + details.name + "</p>" +
+				"<p><b>Email: </b>" + details.email + "</p>" +
+				"<p><b>Username: </b>" + details.username + "</p>" +
+				"<p><b>Password: </b>" + details.password + "</p>"
+
+			list.appendChild(item);
+		});
+	</script>
+</body>
+
+</html>
